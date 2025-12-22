@@ -6,63 +6,85 @@ const AboutSection = () => {
 
   useEffect(() => {
     // Content animation
-    const contentElements = document.querySelectorAll('.about-animate');
+    const contentElements = document.querySelectorAll(".about-animate");
     contentElements.forEach((element, index) => {
-      element.style.opacity = '0';
-      element.style.transform = 'translateY(40px)';
-      
+      element.style.opacity = "0";
+      element.style.transform = "translateY(40px)";
+
       setTimeout(() => {
-        element.style.transition = 'all 1s cubic-bezier(0.175, 0.885, 0.32, 1)';
-        element.style.opacity = '1';
-        element.style.transform = 'translateY(0)';
+        element.style.transition = "all 1s cubic-bezier(0.175, 0.885, 0.32, 1)";
+        element.style.opacity = "1";
+        element.style.transform = "translateY(0)";
       }, index * 200 + 300);
     });
 
     // Stats animation
-    const statCards = document.querySelectorAll('.stat-card');
+    const statCards = document.querySelectorAll(".stat-card");
     statCards.forEach((card, index) => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(30px) scale(0.95)';
-      
+      card.style.opacity = "0";
+      card.style.transform = "translateY(30px) scale(0.95)";
+
       setTimeout(() => {
-        card.style.transition = 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-        card.style.opacity = '1';
-        card.style.transform = 'translateY(0) scale(1)';
+        card.style.transition =
+          "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0) scale(1)";
       }, index * 150 + 600);
 
       // Hover effects
       card.addEventListener("mouseenter", () => {
-        card.style.transition = 'all 0.3s ease';
-        card.style.transform = 'translateY(-5px) scale(1.02)';
+        card.style.transition = "all 0.3s ease";
+        card.style.transform = "translateY(-5px) scale(1.02)";
       });
 
       card.addEventListener("mouseleave", () => {
-        card.style.transition = 'all 0.3s ease';
-        card.style.transform = 'translateY(0) scale(1)';
+        card.style.transition = "all 0.3s ease";
+        card.style.transform = "translateY(0) scale(1)";
       });
     });
 
     // Logo box hover
-    const logoBox = document.querySelector('.logo-box');
+    const logoBox = document.querySelector(".logo-box");
     if (logoBox) {
       logoBox.addEventListener("mouseenter", () => {
-        logoBox.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-        logoBox.style.transform = 'scale(1.05) rotateY(5deg)';
+        logoBox.style.transition =
+          "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+        logoBox.style.transform = "scale(1.05) rotateY(5deg)";
       });
 
       logoBox.addEventListener("mouseleave", () => {
-        logoBox.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-        logoBox.style.transform = 'scale(1) rotateY(0deg)';
+        logoBox.style.transition =
+          "all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+        logoBox.style.transform = "scale(1) rotateY(0deg)";
       });
     }
-
   }, []);
 
   const stats = [
-    { icon: Award, value: "30+", label: "Years Experience", color: "from-amber-500 to-orange-500" },
-    { icon: Users, value: "500+", label: "Clients Served", color: "from-blue-500 to-indigo-500" },
-    { icon: Globe2, value: "2", label: "Countries", color: "from-emerald-500 to-teal-500" },
-    { icon: TrendingUp, value: "100%", label: "Success Rate", color: "from-purple-500 to-violet-500" },
+    {
+      icon: Award,
+      value: "30+",
+      label: "Years Experience",
+      color: "from-amber-500 to-orange-500",
+    },
+    {
+      icon: Users,
+      value: "500+",
+      label: "Clients Served",
+      color: "from-blue-500 to-indigo-500",
+    },
+    {
+      icon: Globe2,
+      value: "2",
+      label: "Countries",
+      color: "from-emerald-500 to-teal-500",
+    },
+    {
+      icon: TrendingUp,
+      value: "100%",
+      label: "Success Rate",
+      color: "from-purple-500 to-violet-500",
+    },
   ];
 
   return (
@@ -82,7 +104,6 @@ const AboutSection = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Main content grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
-          
           {/* Text Content */}
           <div className="space-y-8">
             <div className="about-animate">
@@ -90,11 +111,11 @@ const AboutSection = () => {
                 <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
                 Premier Dubai-based Consultancy
               </div>
-              
+
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 About{" "}
                 <span className="bg-gradient-to-r from-amber-600 via-orange-500 to-amber-700 bg-clip-text text-transparent">
-                  CAPMC Corporate
+                  Squareable India Corporate
                 </span>
                 <br />
                 <span className="text-gray-700">Consultancy Services</span>
@@ -103,24 +124,30 @@ const AboutSection = () => {
 
             <div className="about-animate space-y-4">
               <p className="text-lg text-gray-700 leading-relaxed">
-                Led by <span className="font-semibold text-gray-900">CA Piyush Misra</span>, CAPMC is a premier 
-                Dubai-based consultancy firm delivering tailored solutions in business incorporation, 
+                Led by{" "}
+                <span className="font-semibold text-gray-900">
+                  CA Piyush Misra
+                </span>
+                , Squareable India is a premier Dubai-based consultancy firm
+                delivering tailored solutions in business incorporation,
                 taxation, compliance, and strategic finance.
               </p>
               <p className="text-base text-gray-600 leading-relaxed">
-                With a strong presence in both UAE and India, we enable startups, SMEs, corporates, 
-                and global investors to navigate regulatory challenges with confidence and clarity. 
-                Our comprehensive approach ensures seamless business operations across jurisdictions.
+                With a strong presence in both UAE and India, we enable
+                startups, SMEs, corporates, and global investors to navigate
+                regulatory challenges with confidence and clarity. Our
+                comprehensive approach ensures seamless business operations
+                across jurisdictions.
               </p>
             </div>
 
             <div className="about-animate">
               <a
-            href="/services"
-            className="inline-block bg-[#FF8C00] text-white font-bold px-8 py-4 rounded-full shadow-xl hover:bg-[#e67e00] transition duration-300 hover:shadow-2xl transform hover:scale-105"
-          >
-            Explore Our Services →
-          </a>
+                href="/services"
+                className="inline-block bg-[#FF8C00] text-white font-bold px-8 py-4 rounded-full shadow-xl hover:bg-[#e67e00] transition duration-300 hover:shadow-2xl transform hover:scale-105"
+              >
+                Explore Our Services →
+              </a>
             </div>
           </div>
 
@@ -129,17 +156,17 @@ const AboutSection = () => {
             <div className="relative">
               {/* Glow effect */}
               <div className="absolute -inset-4 bg-gradient-to-r from-amber-400/20 to-orange-400/20 rounded-3xl blur-2xl"></div>
-              
+
               {/* Main logo container */}
               <div className="logo-box relative w-80 h-80 bg-gradient-to-br from-white via-gray-50 to-blue-50/50 backdrop-blur-sm border border-white/60 rounded-3xl overflow-hidden shadow-2xl">
                 {/* Inner glow */}
                 <div className="absolute inset-0 bg-gradient-to-br from-amber-50/50 to-orange-50/30 rounded-3xl"></div>
-                
+
                 {/* Logo */}
                 <div className="relative z-10 w-full h-full flex items-center justify-center p-8">
                   <img
-                    src="/img/logo dark.png"
-                    alt="CAPMC Corporate Consultancy Services"
+                    src="/img/Squareable Logo.svg"
+                    alt="Squareable India"
                     className="object-contain w-full h-full filter drop-shadow-lg"
                   />
                 </div>
@@ -170,14 +197,16 @@ const AboutSection = () => {
                   `,
                 }}
               >
-                <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${stat.color} shadow-lg mb-3 group-hover:shadow-xl transition-shadow duration-300`}>
+                <div
+                  className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${stat.color} shadow-lg mb-3 group-hover:shadow-xl transition-shadow duration-300`}
+                >
                   <Icon size={24} className="text-white" />
                 </div>
-                
+
                 <div className="text-2xl font-bold text-gray-900 mb-1 group-hover:text-gray-800 transition-colors">
                   {stat.value}
                 </div>
-                
+
                 <div className="text-sm text-gray-600 font-medium group-hover:text-gray-700 transition-colors">
                   {stat.label}
                 </div>

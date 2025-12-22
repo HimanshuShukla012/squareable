@@ -28,7 +28,11 @@ const NavBar = () => {
   };
 
   const handleLogin = () => {
-    window.open('https://sso.godaddy.com/?realm=pass&app=ox', '_blank', 'noopener,noreferrer');
+    window.open(
+      "https://sso.godaddy.com/?realm=pass&app=ox",
+      "_blank",
+      "noopener,noreferrer"
+    );
   };
 
   useEffect(() => {
@@ -91,16 +95,16 @@ const NavBar = () => {
             <div className="flex items-center gap-4">
               <Link to="/" className="flex items-center gap-4">
                 <img
-                  src="/img/logo dark.png"
+                  src="/img/Squareable Logo.svg"
                   alt="logo"
                   className="w-20 cursor-pointer"
                 />
                 <div className="leading-tight">
                   <div className="text-gray-800 font-bold uppercase tracking-wide text-sm sm:text-base">
-                    CAPMC CORPORATE CONSULTANCY SERVICES
+                    Squareable India
                   </div>
                   <div className="text-gray-600 uppercase text-[10px] sm:text-xs font-semibold">
-                    LLC. FZ.
+                    Pvt. Ltd.
                   </div>
                 </div>
               </Link>
@@ -114,13 +118,13 @@ const NavBar = () => {
                     key={index}
                     to={`/${item.toLowerCase()}`}
                     className="nav-hover-btn !text-gray-800 hover:!text-[#FF8C00]"
-                    style={{ color: '#1f2937 !important' }}
+                    style={{ color: "#1f2937 !important" }}
                   >
                     {item}
                   </Link>
                 ))}
               </div>
-              
+
               <button
                 onClick={handleLogin}
                 className="ml-6 px-5 py-2 bg-[#FF8C00] text-white font-semibold rounded-lg hover:bg-[#FF7700] transition-colors duration-300 shadow-md hover:shadow-lg"
@@ -185,7 +189,10 @@ const NavBar = () => {
 
           {/* Audio Toggle Mobile */}
           <div className="mt-6">
-            <button onClick={toggleAudio} className="flex items-center space-x-0.5">
+            <button
+              onClick={toggleAudio}
+              className="flex items-center space-x-0.5"
+            >
               <audio
                 ref={audioRef}
                 className="hidden"

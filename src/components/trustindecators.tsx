@@ -1,18 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { 
-  Shield, 
-  Award, 
-  Users, 
-  Globe, 
-  TrendingUp, 
-  Star, 
+import React, { useEffect, useRef, useState } from "react";
+import {
+  Shield,
+  Award,
+  Users,
+  Globe,
+  TrendingUp,
+  Star,
   CheckCircle,
   Building2,
   Briefcase,
   Target,
   Handshake,
-  Crown
-} from 'lucide-react';
+  Crown,
+} from "lucide-react";
 
 const EnhancedTrustIndicators = () => {
   const sectionRef = useRef(null);
@@ -29,8 +29,8 @@ const EnhancedTrustIndicators = () => {
         { name: "Global Tech Corp", industry: "Technology", logo: "GT" },
         { name: "International Bank", industry: "Finance", logo: "IB" },
         { name: "Premier Holdings", industry: "Investment", logo: "PH" },
-        { name: "Energy Solutions", industry: "Energy", logo: "ES" }
-      ]
+        { name: "Energy Solutions", industry: "Energy", logo: "ES" },
+      ],
     },
     {
       title: "Growing Startups",
@@ -41,8 +41,8 @@ const EnhancedTrustIndicators = () => {
         { name: "InnovateLab", industry: "AI/ML", logo: "IL" },
         { name: "FinTech Pro", industry: "Fintech", logo: "FP" },
         { name: "EcoVenture", industry: "Sustainability", logo: "EV" },
-        { name: "HealthTech", industry: "Healthcare", logo: "HT" }
-      ]
+        { name: "HealthTech", industry: "Healthcare", logo: "HT" },
+      ],
     },
     {
       title: "Government Entities",
@@ -53,36 +53,39 @@ const EnhancedTrustIndicators = () => {
         { name: "UAE Ministry", industry: "Government", logo: "UM" },
         { name: "Dubai Chamber", industry: "Trade", logo: "DC" },
         { name: "Free Zone Auth", industry: "Authority", logo: "FZ" },
-        { name: "Economic Dev", industry: "Development", logo: "ED" }
-      ]
-    }
+        { name: "Economic Dev", industry: "Development", logo: "ED" },
+      ],
+    },
   ];
 
   const testimonials = [
     {
-      quote: "CAPMC transformed our business setup process from months to weeks. Their expertise in UAE regulations is unmatched.",
+      quote:
+        "Squareable India transformed our business setup process from months to weeks. Their expertise in UAE regulations is unmatched.",
       author: "Sarah Johnson",
       title: "CEO, TechVenture International",
       company: "Fortune 500 Technology Company",
       rating: 5,
-      avatar: "SJ"
+      avatar: "SJ",
     },
     {
-      quote: "The level of professionalism and attention to detail exceeded our expectations. They guided us through every step seamlessly.",
+      quote:
+        "The level of professionalism and attention to detail exceeded our expectations. They guided us through every step seamlessly.",
       author: "Ahmed Al-Rashid",
       title: "Managing Director",
       company: "Emirates Investment Group",
       rating: 5,
-      avatar: "AR"
+      avatar: "AR",
     },
     {
-      quote: "Working with CAPMC was a game-changer. Their deep understanding of local and international business practices is remarkable.",
+      quote:
+        "Working with Squareable India was a game-changer. Their deep understanding of local and international business practices is remarkable.",
       author: "Maria Rodriguez",
       title: "Founder & COO",
       company: "Global Solutions Ltd",
       rating: 5,
-      avatar: "MR"
-    }
+      avatar: "MR",
+    },
   ];
 
   const certifications = [
@@ -90,26 +93,26 @@ const EnhancedTrustIndicators = () => {
       title: "ISO 9001:2015",
       description: "Quality Management",
       icon: Award,
-      color: "#3b82f6"
+      color: "#3b82f6",
     },
     {
       title: "UAE Chamber",
       description: "Certified Member",
       icon: Crown,
-      color: "#10b981"
+      color: "#10b981",
     },
     {
       title: "ICAI Recognition",
       description: "Professional Excellence",
       icon: Star,
-      color: "#f59e0b"
+      color: "#f59e0b",
     },
     {
       title: "Global Standards",
       description: "International Compliance",
       icon: Globe,
-      color: "#8b5cf6"
-    }
+      color: "#8b5cf6",
+    },
   ];
 
   useEffect(() => {
@@ -117,17 +120,17 @@ const EnhancedTrustIndicators = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const elements = entry.target.querySelectorAll('.animate-trust');
+            const elements = entry.target.querySelectorAll(".animate-trust");
             elements.forEach((el, index) => {
               setTimeout(() => {
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0) scale(1)';
+                el.style.opacity = "1";
+                el.style.transform = "translateY(0) scale(1)";
               }, index * 100);
             });
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
 
     if (sectionRef.current) {
@@ -136,23 +139,25 @@ const EnhancedTrustIndicators = () => {
 
     // Auto-rotate testimonials
     const testimonialInterval = setInterval(() => {
-      setActiveTestimonial(prev => (prev + 1) % testimonials.length);
+      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 5000);
 
     // Floating animation for background elements
-    const floatingElements = document.querySelectorAll('.floating-trust-element');
+    const floatingElements = document.querySelectorAll(
+      ".floating-trust-element"
+    );
     floatingElements.forEach((el, index) => {
       const animate = () => {
         const randomX = (Math.random() - 0.5) * 40;
         const randomY = (Math.random() - 0.5) * 60;
         const duration = 4000 + Math.random() * 4000;
-        
+
         el.style.transition = `transform ${duration}ms ease-in-out`;
         el.style.transform = `translate(${randomX}px, ${randomY}px)`;
-        
+
         setTimeout(animate, duration);
       };
-      
+
       setTimeout(animate, index * 600);
     });
 
@@ -177,10 +182,10 @@ const EnhancedTrustIndicators = () => {
 
       {/* Geometric Pattern Overlay */}
       <div className="absolute inset-0 opacity-5">
-        <div 
+        <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.08'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Ccircle cx='50' cy='50' r='3'/%3E%3Cpath d='M15 25h30v10H15z' fill-opacity='0.03'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.08'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Ccircle cx='50' cy='50' r='3'/%3E%3Cpath d='M15 25h30v10H15z' fill-opacity='0.03'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }}
         ></div>
       </div>
@@ -188,21 +193,25 @@ const EnhancedTrustIndicators = () => {
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <div className="animate-trust opacity-0 transform translate-y-8" style={{transition: 'all 0.8s ease-out'}}>
+          <div
+            className="animate-trust opacity-0 transform translate-y-8"
+            style={{ transition: "all 0.8s ease-out" }}
+          >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 border border-blue-200 rounded-full text-sm font-medium text-blue-700 mb-6">
               <Handshake className="w-4 h-4" />
               Trusted Partnerships
             </div>
-            
+
             <h2 className="text-4xl md:text-6xl font-black mb-6 text-gray-900 leading-tight">
               <span className="block">Trusted by</span>
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
                 Industry Leaders
               </span>
             </h2>
-            
+
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              From Fortune 500 companies to innovative startups, organizations worldwide trust us to deliver exceptional results
+              From Fortune 500 companies to innovative startups, organizations
+              worldwide trust us to deliver exceptional results
             </p>
           </div>
         </div>
@@ -210,21 +219,41 @@ const EnhancedTrustIndicators = () => {
         {/* Trust Statistics */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
           {[
-            { number: "500+", label: "Companies Formed", icon: Building2, color: "#3b82f6" },
-            { number: "15+", label: "Countries Served", icon: Globe, color: "#10b981" },
-            { number: "99.9%", label: "Success Rate", icon: Target, color: "#f59e0b" },
-            { number: "30+", label: "Years Experience", icon: Award, color: "#8b5cf6" },
+            {
+              number: "500+",
+              label: "Companies Formed",
+              icon: Building2,
+              color: "#3b82f6",
+            },
+            {
+              number: "15+",
+              label: "Countries Served",
+              icon: Globe,
+              color: "#10b981",
+            },
+            {
+              number: "99.9%",
+              label: "Success Rate",
+              icon: Target,
+              color: "#f59e0b",
+            },
+            {
+              number: "30+",
+              label: "Years Experience",
+              icon: Award,
+              color: "#8b5cf6",
+            },
           ].map((stat, index) => (
             <div
               key={index}
               className="animate-trust opacity-0 transform translate-y-8 group relative bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-500"
               style={{
-                transition: 'all 0.8s ease-out',
-                transitionDelay: `${index * 100 + 200}ms`
+                transition: "all 0.8s ease-out",
+                transitionDelay: `${index * 100 + 200}ms`,
               }}
             >
               <div className="flex items-center justify-center mb-4">
-                <div 
+                <div
                   className="w-14 h-14 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
                   style={{ backgroundColor: `${stat.color}15` }}
                 >
@@ -232,16 +261,19 @@ const EnhancedTrustIndicators = () => {
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-black mb-1" style={{ color: stat.color }}>
+                <div
+                  className="text-2xl font-black mb-1"
+                  style={{ color: stat.color }}
+                >
                   {stat.number}
                 </div>
                 <div className="text-sm text-gray-600 font-medium">
                   {stat.label}
                 </div>
               </div>
-              
+
               {/* Hover effect line */}
-              <div 
+              <div
                 className="absolute bottom-0 left-0 right-0 h-1 rounded-b-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
                 style={{ backgroundColor: stat.color }}
               ></div>
@@ -256,17 +288,19 @@ const EnhancedTrustIndicators = () => {
               key={categoryIndex}
               className="animate-trust opacity-0 transform translate-y-8 group relative bg-white/90 backdrop-blur-sm border border-gray-200 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-700"
               style={{
-                transition: 'all 0.8s ease-out',
-                transitionDelay: `${categoryIndex * 200 + 600}ms`
+                transition: "all 0.8s ease-out",
+                transitionDelay: `${categoryIndex * 200 + 600}ms`,
               }}
             >
               <div className="flex items-center gap-4 mb-6">
-                <div 
+                <div
                   className={`w-14 h-14 rounded-2xl flex items-center justify-center bg-gradient-to-r ${category.gradient} shadow-lg`}
                 >
                   <category.icon size={24} className="text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900">{category.title}</h3>
+                <h3 className="text-xl font-bold text-gray-900">
+                  {category.title}
+                </h3>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
@@ -275,7 +309,7 @@ const EnhancedTrustIndicators = () => {
                     key={clientIndex}
                     className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300 group/client"
                   >
-                    <div 
+                    <div
                       className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-xs shadow-md"
                       style={{ backgroundColor: category.color }}
                     >
@@ -294,7 +328,7 @@ const EnhancedTrustIndicators = () => {
               </div>
 
               {/* Category accent */}
-              <div 
+              <div
                 className="absolute top-0 right-0 w-20 h-20 opacity-10 rounded-bl-full transition-opacity duration-300 group-hover:opacity-20"
                 style={{ backgroundColor: category.color }}
               ></div>
@@ -304,23 +338,35 @@ const EnhancedTrustIndicators = () => {
 
         {/* Testimonials Slider */}
         <div className="mb-20">
-          <div className="animate-trust opacity-0 transform translate-y-8" style={{transition: 'all 0.8s ease-out', transitionDelay: '1000ms'}}>
+          <div
+            className="animate-trust opacity-0 transform translate-y-8"
+            style={{
+              transition: "all 0.8s ease-out",
+              transitionDelay: "1000ms",
+            }}
+          >
             <div className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 rounded-3xl p-12 shadow-2xl overflow-hidden">
               {/* Background Pattern */}
               <div className="absolute inset-0 opacity-10">
-                <div 
+                <div
                   className="absolute inset-0"
                   style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='white' fill-opacity='0.1'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E")`
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='white' fill-opacity='0.1'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E")`,
                   }}
                 ></div>
               </div>
 
               <div className="relative z-10 text-center">
                 <div className="flex justify-center mb-6">
-                  {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
-                    <Star key={i} size={24} className="text-yellow-400 fill-current" />
-                  ))}
+                  {[...Array(testimonials[activeTestimonial].rating)].map(
+                    (_, i) => (
+                      <Star
+                        key={i}
+                        size={24}
+                        className="text-yellow-400 fill-current"
+                      />
+                    )
+                  )}
                 </div>
 
                 <blockquote className="text-2xl md:text-3xl font-medium text-white mb-8 leading-relaxed max-w-4xl mx-auto">
@@ -351,8 +397,8 @@ const EnhancedTrustIndicators = () => {
                       key={index}
                       className={`w-3 h-3 rounded-full transition-all duration-300 ${
                         activeTestimonial === index
-                          ? 'bg-white scale-125'
-                          : 'bg-white/40 hover:bg-white/60'
+                          ? "bg-white scale-125"
+                          : "bg-white/40 hover:bg-white/60"
                       }`}
                       onClick={() => setActiveTestimonial(index)}
                     />
@@ -370,21 +416,23 @@ const EnhancedTrustIndicators = () => {
               key={index}
               className="animate-trust opacity-0 transform translate-y-8 group text-center p-6 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500"
               style={{
-                transition: 'all 0.8s ease-out',
-                transitionDelay: `${index * 100 + 1200}ms`
+                transition: "all 0.8s ease-out",
+                transitionDelay: `${index * 100 + 1200}ms`,
               }}
             >
-              <div 
+              <div
                 className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
                 style={{ backgroundColor: `${cert.color}15` }}
               >
                 <cert.icon size={28} style={{ color: cert.color }} />
               </div>
-              <h4 className="font-bold text-gray-900 text-sm mb-1">{cert.title}</h4>
+              <h4 className="font-bold text-gray-900 text-sm mb-1">
+                {cert.title}
+              </h4>
               <p className="text-xs text-gray-600">{cert.description}</p>
-              
+
               {/* Certification badge effect */}
-              <div 
+              <div
                 className="absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 style={{ backgroundColor: cert.color }}
               >
@@ -396,9 +444,16 @@ const EnhancedTrustIndicators = () => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <div className="animate-trust opacity-0 transform translate-y-8" style={{transition: 'all 0.8s ease-out', transitionDelay: '1600ms'}}>
+          <div
+            className="animate-trust opacity-0 transform translate-y-8"
+            style={{
+              transition: "all 0.8s ease-out",
+              transitionDelay: "1600ms",
+            }}
+          >
             <p className="text-lg text-gray-600 mb-6">
-              Join hundreds of successful companies who trust us with their business journey
+              Join hundreds of successful companies who trust us with their
+              business journey
             </p>
             <button className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
               <Users size={20} />

@@ -1,17 +1,14 @@
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  safelist: ['animate-bubble'],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  safelist: ["animate-bubble"],
   theme: {
     extend: {
       colors: {
-        'capmc-blue': '#0A1E5E',
-        'capmc-violet': '#4B2A85',
-        'capmc-gold': '#D4AF37',
-        'capmc-bg': '#F8F9FD',
-        'capmc-text': '#1C1C1E',
+        "Squareable India-blue": "#0A1E5E",
+        "Squareable India-violet": "#4B2A85",
+        "Squareable India-gold": "#D4AF37",
+        "Squareable India-bg": "#F8F9FD",
+        "Squareable India-text": "#1C1C1E",
       },
       keyframes: {
         bubble: {

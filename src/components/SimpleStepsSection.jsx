@@ -1,66 +1,50 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FolderKanban, FileText, BadgeCheck, Banknote, ArrowRight, Clock, CheckCircle } from "lucide-react";
+import { Zap, TrendingDown, Shield, Gift, CheckCircle, Clock } from "lucide-react";
 
 const steps = [
   {
-    title: "Select Jurisdiction & Choose Business Activity",
-    description: "Strategic consultation to determine optimal jurisdiction and business structure tailored to your specific industry requirements.",
-    icon: FolderKanban,
+    title: "We Build",
+    description: "100% capital deployment from us. Premium equipment, professional installation.",
+    icon: Zap,
     number: "01",
-    gradient: "from-orange-500 to-amber-500",
-    shadowColor: "rgba(251, 146, 60, 0.25)",
-    glowColor: "rgba(251, 146, 60, 0.1)",
-    bgColor: "bg-gradient-to-br from-orange-50 to-amber-50",
-    borderColor: "border-orange-200",
-    accentColor: "#f59e0b",
-    duration: "1-2 Days",
-    features: ["Jurisdiction Analysis", "Business Structure", "Compliance Review"]
-  },
-  {
-    title: "Document Preparation & Trade License",
-    description: "Comprehensive document preparation and trade license acquisition with meticulous attention to regulatory compliance.",
-    icon: FileText,
-    number: "02",
     gradient: "from-blue-500 to-cyan-500",
     shadowColor: "rgba(59, 130, 246, 0.25)",
-    glowColor: "rgba(59, 130, 246, 0.1)",
-    bgColor: "bg-gradient-to-br from-blue-50 to-cyan-50",
-    borderColor: "border-blue-200",
-    accentColor: "#3b82f6",
-    duration: "3-5 Days",
-    features: ["Document Prep", "Trade License", "Legal Compliance"]
+    duration: "6-8 Months",
+    features: ["Zero Upfront Cost", "Tier-1 Equipment", "Expert Installation"]
   },
   {
-    title: "Visa Process & Immigration",
-    description: "Streamlined visa application management for business owners and key personnel with expert immigration support.",
-    icon: BadgeCheck,
-    number: "03",
+    title: "We Own",
+    description: "Asset ownership and all responsibilities stay with us throughout 25-year PPA.",
+    icon: Shield,
+    number: "02",
     gradient: "from-emerald-500 to-teal-500",
     shadowColor: "rgba(16, 185, 129, 0.25)",
-    glowColor: "rgba(16, 185, 129, 0.1)",
-    bgColor: "bg-gradient-to-br from-emerald-50 to-teal-50",
-    borderColor: "border-emerald-200",
-    accentColor: "#10b981",
-    duration: "7-14 Days",
-    features: ["Visa Applications", "Immigration Support", "Personnel Processing"]
+    duration: "25 Years",
+    features: ["Our Ownership", "Our Insurance", "Our Risk"]
   },
   {
-    title: "Corporate Bank Account Setup",
-    description: "Establishment of premium corporate banking relationships with leading UAE financial institutions for seamless operations.",
-    icon: Banknote,
-    number: "04",
+    title: "We Operate",
+    description: "Complete O&M, monitoring, repairs, and performance guarantee included.",
+    icon: Clock,
+    number: "03",
     gradient: "from-purple-500 to-indigo-500",
     shadowColor: "rgba(139, 92, 246, 0.25)",
-    glowColor: "rgba(139, 92, 246, 0.1)",
-    bgColor: "bg-gradient-to-br from-purple-50 to-indigo-50",
-    borderColor: "border-purple-200",
-    accentColor: "#8b5cf6",
-    duration: "5-7 Days",
-    features: ["Bank Setup", "Account Opening", "Banking Relations"]
+    duration: "Ongoing",
+    features: ["24/7 Monitoring", "Professional O&M", "Performance Guarantee"]
+  },
+  {
+    title: "You Save",
+    description: "Pay fixed tariff lower than grid rate. Immediate savings from day one.",
+    icon: TrendingDown,
+    number: "04",
+    gradient: "from-orange-500 to-amber-500",
+    shadowColor: "rgba(251, 146, 60, 0.25)",
+    duration: "Immediate",
+    features: ["Fixed Tariff", "Instant Savings", "Predictable Costs"]
   },
 ];
 
-const ProfessionalStepsSection = () => {
+const OpexModelSection = () => {
   const sectionRef = useRef(null);
   const [activeStep, setActiveStep] = useState(null);
 
@@ -69,7 +53,7 @@ const ProfessionalStepsSection = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const cards = entry.target.querySelectorAll(".step-card");
+            const cards = entry.target.querySelectorAll(".opex-card");
             cards.forEach((card, index) => {
               setTimeout(() => {
                 card.style.opacity = "1";
@@ -92,65 +76,56 @@ const ProfessionalStepsSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-gradient-to-br from-gray-50 via-white to-slate-50 py-24 px-6 md:px-12 lg:px-24 overflow-hidden"
+      className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 py-24 px-6 md:px-12 lg:px-24 overflow-hidden"
     >
-      {/* Dubai Skyline Background */}
+      {/* Solar panel background image */}
       <div className="absolute inset-0">
-        {/* Dubai skyline background image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat  "
+          className="absolute inset-0 bg-cover bg-center opacity-10"
           style={{
-            backgroundImage: `url('/img/dubai.png')`
+            backgroundImage: `url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1200')`,
           }}
         ></div>
         
-        {/* Overlay gradient for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-white/95 to-slate-50/90 opacity-80"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-blue-900/90 to-indigo-900/95"></div>
         
-        {/* Subtle floating orbs to maintain depth */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-amber-300/8 to-orange-300/8 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-64 h-64 bg-gradient-to-r from-blue-400/10 to-cyan-400/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
-        <div className="absolute bottom-40 left-1/4 w-80 h-80 bg-gradient-to-r from-emerald-300/6 to-teal-300/6 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-        <div className="absolute bottom-20 right-1/3 w-56 h-56 bg-gradient-to-r from-purple-300/8 to-indigo-300/8 rounded-full blur-3xl animate-pulse" style={{animationDelay: '0.5s'}}></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-amber-400/10 to-orange-400/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-64 h-64 bg-gradient-to-r from-blue-400/15 to-cyan-400/15 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute bottom-40 left-1/4 w-80 h-80 bg-gradient-to-r from-emerald-400/8 to-teal-400/8 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
       </div>
 
-      {/* Content */}
       <div className="relative z-10">
-        {/* Header Section */}
+        {/* Header */}
         <div className="text-center mb-20">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600 shadow-sm mb-6">
-            <CheckCircle className="w-4 h-4 text-emerald-500" />
-            Professional Business Setup Process
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 border border-amber-400/30 rounded-full text-sm font-medium text-amber-200 shadow-sm mb-6">
+            <Gift className="w-4 h-4" />
+            Revolutionary OPEX Model
           </div>
 
-          {/* Main Title */}
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            <span className="text-gray-900">Your Path to</span>
+            <span className="text-white">Zero Investment,</span>
             <br />
-            <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 bg-clip-text text-transparent">
-              Dubai Business Success
+            <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 bg-clip-text text-transparent">
+              Maximum Returns
             </span>
           </h2>
 
-          {/* Subtitle */}
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-            Four expertly designed steps to establish your chartered accountancy practice in Dubai's dynamic business landscape
+          <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed mb-8">
+            Our Build-Own-Operate-Transfer (BOOT) model eliminates capital barriers. You enjoy immediate savings while we handle everything.
           </p>
 
-          {/* Stats */}
-          <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-500">
+          <div className="flex flex-wrap justify-center gap-8 text-sm text-blue-200">
             <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-amber-500" />
-              <span>14-21 Business Days</span>
+              <CheckCircle className="w-4 h-4 text-emerald-400" />
+              <span>₹0 Upfront Investment</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-emerald-500" />
-              <span>100% Success Rate</span>
+              <CheckCircle className="w-4 h-4 text-emerald-400" />
+              <span>Savings from Day 1</span>
             </div>
             <div className="flex items-center gap-2">
-              <BadgeCheck className="w-4 h-4 text-blue-500" />
-              <span>Full Compliance</span>
+              <CheckCircle className="w-4 h-4 text-emerald-400" />
+              <span>FREE Asset Transfer After 25 Years</span>
             </div>
           </div>
         </div>
@@ -163,12 +138,12 @@ const ProfessionalStepsSection = () => {
             return (
               <div
                 key={index}
-                className={`step-card group relative ${step.bgColor} rounded-2xl p-8 border-2 ${step.borderColor} shadow-lg hover:shadow-2xl transition-all duration-500 opacity-0 translate-y-8 cursor-pointer`}
+                className="opex-card group relative bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-8 border-2 border-white/20 shadow-lg hover:shadow-2xl transition-all duration-500 opacity-0 translate-y-8 cursor-pointer backdrop-blur-sm"
                 onMouseEnter={() => setActiveStep(index)}
                 onMouseLeave={() => setActiveStep(null)}
                 style={{
                   boxShadow: activeStep === index 
-                    ? `0 20px 40px ${step.shadowColor}, 0 0 0 1px rgba(255,255,255,0.8)` 
+                    ? `0 20px 40px ${step.shadowColor}, 0 0 0 1px rgba(255,255,255,0.3)` 
                     : `0 10px 25px ${step.shadowColor}`
                 }}
               >
@@ -177,7 +152,7 @@ const ProfessionalStepsSection = () => {
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${step.gradient} flex items-center justify-center text-white font-bold text-lg shadow-lg`}>
                     {step.number}
                   </div>
-                  <div className="text-xs text-gray-500 font-medium bg-white/80 px-3 py-1 rounded-full">
+                  <div className="text-xs text-blue-200 font-medium bg-white/10 px-3 py-1 rounded-full">
                     {step.duration}
                   </div>
                 </div>
@@ -190,21 +165,18 @@ const ProfessionalStepsSection = () => {
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text transition-all duration-300"
-                  style={{
-                    backgroundImage: `linear-gradient(to right, ${step.gradient.replace('from-', '').replace('to-', ', ')})`
-                  }}>
+                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-amber-300 transition-colors duration-300">
                   {step.title}
                 </h3>
 
-                <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                <p className="text-blue-100 text-sm leading-relaxed mb-6">
                   {step.description}
                 </p>
 
                 {/* Features */}
                 <div className="space-y-2">
                   {step.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs text-gray-500">
+                    <div key={idx} className="flex items-center gap-2 text-xs text-blue-200">
                       <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${step.gradient}`}></div>
                       {feature}
                     </div>
@@ -217,8 +189,10 @@ const ProfessionalStepsSection = () => {
                 {/* Arrow for next step */}
                 {index < steps.length - 1 && (
                   <div className="hidden xl:flex absolute top-1/2 -right-4 transform -translate-y-1/2 z-20">
-                    <div className="w-8 h-8 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center shadow-lg">
-                      <ArrowRight size={14} className="text-gray-600" />
+                    <div className="w-8 h-8 bg-white/20 border-2 border-white/30 rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
                     </div>
                   </div>
                 )}
@@ -227,27 +201,74 @@ const ProfessionalStepsSection = () => {
           })}
         </div>
 
-        {/* Process Flow Visualization */}
-        <div className="text-center mb-16">
-          <div className="flex justify-center items-center gap-4 flex-wrap">
-            {steps.map((step, index) => (
-              <React.Fragment key={index}>
-                <div className="flex flex-col items-center">
-                  <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${step.gradient} shadow-lg`}></div>
-                  <span className="text-xs text-gray-500 mt-2 font-medium">Step {step.number}</span>
+        {/* Value Proposition */}
+        <div className="max-w-5xl mx-auto">
+          <div className="bg-gradient-to-br from-amber-500/20 to-orange-500/20 backdrop-blur-sm border border-amber-400/30 rounded-3xl p-8 md:p-12">
+            <div className="text-center mb-8">
+              <h3 className="text-3xl font-bold text-white mb-4">The Squareable Advantage</h3>
+              <p className="text-amber-100 text-lg">Why our OPEX model transforms your business</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 flex items-center justify-center">
+                    <CheckCircle className="w-6 h-6 text-white" />
+                  </div>
                 </div>
-                {index < steps.length - 1 && (
-                  <div className="hidden md:block w-8 h-px bg-gradient-to-r from-gray-300 to-gray-400"></div>
-                )}
-              </React.Fragment>
-            ))}
+                <div>
+                  <h4 className="text-white font-semibold mb-2">Capital Efficiency</h4>
+                  <p className="text-blue-100 text-sm">Deploy your ₹40-80L equity in core business growth, not solar infrastructure</p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center">
+                    <CheckCircle className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-white font-semibold mb-2">Off-Balance Sheet</h4>
+                  <p className="text-blue-100 text-sm">No debt on your books. No impact on credit capacity. Clean financials.</p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 flex items-center justify-center">
+                    <CheckCircle className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-white font-semibold mb-2">Zero Risk Transfer</h4>
+                  <p className="text-blue-100 text-sm">We bear equipment, performance, and maintenance risks. You just consume power.</p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                    <CheckCircle className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-white font-semibold mb-2">Future Asset Ownership</h4>
+                  <p className="text-blue-100 text-sm">After 25 years, system transfers to you FREE. Enjoy 10+ more years of virtually free electricity.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-10 text-center">
+              <button className="bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-amber-50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105">
+                Download OPEX Model Brochure
+              </button>
+            </div>
           </div>
         </div>
-
-        
       </div>
     </section>
   );
 };
 
-export default ProfessionalStepsSection;
+export default OpexModelSection;

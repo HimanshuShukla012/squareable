@@ -3,12 +3,13 @@ import Footer from "../components/Footer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useGSAP } from "@gsap/react";
-import SimpleStepsSection from "../components/SimpleStepsSection";
-import OurServicesSection from "../components/OurServicesSection";
-import WhyUaeSection from "../components/WhyUaeSection";
-import TeamSection from "../components/TeamSection";
+import OpexModelSection from "../components/SimpleStepsSection";
+import IndustriesSection from "../components/OurServicesSection";
+import WhySolarSection from "../components/WhyUaeSection";
+import SolarJourneySection from "../components/TeamSection";
 import AboutSection from "../components/AboutSection";
-import FaqSection from "../components/FaqSection";
+import SolarFaqSection from "../components/FaqSection";
+import HeroSection from "../components/herosection"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,26 +39,15 @@ const LandingPage = () => {
     <div className="bg-gradient-to-b from-gray-50 via-white to-gray-100 text-gray-800 scroll-smooth">
       <Navbar />
 
-      <section className="relative h-screen w-full overflow-hidden fade-in">
-  <video
-    autoPlay
-    loop
-    muted
-    playsInline
-    className="absolute top-0 left-0 w-full h-full object-cover"
-  >
-    <source src="/Squareable_Cover.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-</section>
+      <HeroSection />
 
       <div className="space-y-24 md:space-y-32 pt-20">
         <AboutSection />
-        <WhyUaeSection />
-        <SimpleStepsSection />
-        <OurServicesSection />
-        <TeamSection />
-        <FaqSection />
+        <WhySolarSection />
+        <OpexModelSection />
+        <IndustriesSection />
+        <SolarJourneySection />
+        <SolarFaqSection />
       </div>
 
       <Footer />

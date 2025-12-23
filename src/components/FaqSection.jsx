@@ -1,50 +1,66 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ChevronDown, ChevronUp, HelpCircle, Sparkles } from "lucide-react";
+import { ChevronDown, ChevronUp, Sun, Sparkles } from "lucide-react";
 
 const faqs = [
   {
-    question: "Why Choose Dubai For Starting A Business?",
+    question: "What is the OPEX model and how does it work?",
     answer:
-      "Dubai is a strategic global business destination offering world-class infrastructure, a strategic location connecting major markets, tax-friendly policies, political stability, and a diverse, innovative economy.",
-    gradient: "from-orange-500 via-amber-500 to-yellow-500",
-    shadowColor: "rgba(255, 140, 0, 0.4)",
-    glowColor: "rgba(255, 140, 0, 0.15)",
+      "Our OPEX (Build-Own-Operate-Transfer) model means you pay ZERO upfront investment. We deploy 100% capital, own the system for 25 years, handle all operations & maintenance, and you simply purchase the electricity at a fixed tariff lower than grid rates. After 25 years, the fully operational system transfers to you FREE.",
+    gradient: "from-amber-500 to-orange-500",
+    shadowColor: "rgba(245, 158, 11, 0.4)",
   },
   {
-    question: "What Support Does Dubai Offer Entrepreneurs Starting A Business?",
+    question: "How much space do I need for a solar installation?",
     answer:
-      "Dubai offers extensive support to entrepreneurs through simplified business setup processes, competitive licensing options, investor visas, and dedicated free zones with numerous incentives.",
-    gradient: "from-blue-500 via-cyan-500 to-teal-500",
+      "For a 300 kW system, you need approximately 30,000-35,000 sq ft (0.7-0.8 acres) for ground-mounted, or 25,000-30,000 sq ft for rooftop installations. We can optimize designs for constrained spaces using higher-efficiency panels.",
+    gradient: "from-blue-500 to-cyan-500",
     shadowColor: "rgba(59, 130, 246, 0.4)",
-    glowColor: "rgba(59, 130, 246, 0.15)",
   },
   {
-    question: "What Are My Options For Company Formation In The UAE, And How Much Does It Cost?",
+    question: "What happens on cloudy days or during monsoon?",
     answer:
-      "You can establish your business in a Freezone, Mainland, or Offshore jurisdiction. Cost varies by setup type, jurisdiction, activity, and license.",
-    gradient: "from-purple-500 via-violet-500 to-indigo-500",
-    shadowColor: "rgba(139, 92, 246, 0.4)",
-    glowColor: "rgba(139, 92, 246, 0.15)",
-  },
-  {
-    question: "What Kind Of Business Licenses Are Available In Dubai?",
-    answer:
-      "Dubai offers Commercial, Professional, Industrial, and Tourism licenses. Each caters to different business sectors.",
-    gradient: "from-emerald-500 via-green-500 to-lime-500",
+      "Solar panels generate electricity even on cloudy days at 10-70% capacity depending on cloud cover. Our designs account for monsoon seasons - Lucknow's annual average of 5.5-6.0 peak sun hours/day ensures consistent yearly generation. During low generation, you simply use grid power at regular rates.",
+    gradient: "from-emerald-500 to-teal-500",
     shadowColor: "rgba(16, 185, 129, 0.4)",
-    glowColor: "rgba(16, 185, 129, 0.15)",
   },
   {
-    question: "How Long Does The Company Formation Process Take In Dubai, And What Documents Are Required?",
+    question: "How long does the system last and what about warranties?",
     answer:
-      "It usually takes 3 weeks to a few months. Documents include passport copies, visa (if applicable), proof of address, business plan, and regulatory approvals.",
-    gradient: "from-rose-500 via-pink-500 to-fuchsia-500",
+      "Solar panels have a 25-year output warranty (minimum 84% capacity) and 30-35+ years actual life. Inverters last 10-15 years (replaced mid-term). The complete system operates effectively for 30-35 years. Under OPEX, all warranties, replacements, and maintenance are our responsibility.",
+    gradient: "from-purple-500 to-indigo-500",
+    shadowColor: "rgba(139, 92, 246, 0.4)",
+  },
+  {
+    question: "What is Net Energy Metering (NEM) and how does it benefit me?",
+    answer:
+      "NEM allows your meter to run backwards when you generate more than you consume. Excess solar energy flows to the grid, earning you credits. During evenings/cloudy days, you draw from grid and credits offset your bill. It maximizes financial benefits, especially for businesses with weekend closures or seasonal variations.",
+    gradient: "from-rose-500 to-pink-500",
     shadowColor: "rgba(244, 63, 94, 0.4)",
-    glowColor: "rgba(244, 63, 94, 0.15)",
+  },
+  {
+    question: "How much will I actually save with solar?",
+    answer:
+      "For a 300 kW system: Year 1 savings ₹4.6L, Year 10 ₹27.9L annually. Over 25 years, total savings reach ₹9.75 Crores with OPEX model. Post-transfer (Years 26-35), enjoy virtually free electricity worth another ₹13 Crores. Total 35-year savings: ₹22-23 Crores.",
+    gradient: "from-yellow-500 to-amber-500",
+    shadowColor: "rgba(234, 179, 8, 0.4)",
+  },
+  {
+    question: "What if my business relocates or closes?",
+    answer:
+      "Our PPA includes fair exit provisions. Options include: (1) Transfer PPA to new property owner, (2) System buyout at fair market value, (3) We relocate system if feasible, or (4) Negotiated early termination with compensation. All scenarios and formulas are detailed in the PPA upfront.",
+    gradient: "from-cyan-500 to-blue-500",
+    shadowColor: "rgba(6, 182, 212, 0.4)",
+  },
+  {
+    question: "How long does installation take and what approvals are needed?",
+    answer:
+      "Total timeline: 8-10 months from application to operation. We handle all approvals: NEM approval (3-5 weeks), electrical safety clearance, building permits, fire safety NOC. You focus on your business while we navigate regulatory requirements and coordinate all installations.",
+    gradient: "from-lime-500 to-green-500",
+    shadowColor: "rgba(132, 204, 22, 0.4)",
   },
 ];
 
-const EnhancedFaqSection = () => {
+const SolarFaqSection = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const sectionRef = useRef(null);
 
@@ -55,13 +71,10 @@ const EnhancedFaqSection = () => {
   useEffect(() => {
     const faqItems = document.querySelectorAll(".faq-item");
     
-    // Enhanced FAQ items entrance animation
     faqItems.forEach((item, index) => {
-      // Initial state
       item.style.opacity = '0';
       item.style.transform = 'translateY(60px) scale(0.95)';
       
-      // Animate in with stagger
       setTimeout(() => {
         item.style.transition = 'all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
         item.style.opacity = '1';
@@ -69,7 +82,6 @@ const EnhancedFaqSection = () => {
       }, index * 150 + 300);
     });
 
-    // Enhanced FAQ items interactions with smooth lift effect
     faqItems.forEach((item, index) => {
       const faq = faqs[index];
       
@@ -84,117 +96,88 @@ const EnhancedFaqSection = () => {
       item.addEventListener("mouseenter", () => {
         item.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
         item.style.transform = 'translateY(-8px) scale(1.02)';
-        item.style.filter = 'brightness(1.05)';
       });
 
       item.addEventListener("mouseleave", () => {
         item.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
         item.style.transform = 'translateY(0) scale(1)';
-        item.style.filter = 'brightness(1)';
       });
     });
-
-    // Floating animation for background elements
-    const floatingOrbs = document.querySelectorAll(".floating-orb");
-    floatingOrbs.forEach((orb, index) => {
-      const animate = () => {
-        const randomX = (Math.random() - 0.5) * 50;
-        const randomY = (Math.random() - 0.5) * 60;
-        const randomRotation = Math.random() * 360;
-        const duration = 6000 + Math.random() * 4000;
-        
-        orb.style.transition = `transform ${duration}ms ease-in-out`;
-        orb.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${randomRotation}deg)`;
-        
-        setTimeout(animate, duration);
-      };
-      
-      setTimeout(animate, index * 1000);
-    });
-
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="relative py-32 px-6 md:px-24 bg-gradient-to-br from-white via-gray-50 to-blue-50/20 text-gray-800 overflow-hidden"
+      className="relative py-32 px-6 md:px-24 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 text-gray-800 overflow-hidden"
     >
-      {/* Animated Background Elements */}
+      {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="floating-orb absolute top-20 left-16 w-72 h-72 bg-gradient-to-r from-orange-200/25 to-amber-200/25 rounded-full blur-3xl"></div>
-        <div className="floating-orb absolute top-32 right-20 w-80 h-80 bg-gradient-to-r from-blue-200/30 to-cyan-200/30 rounded-full blur-2xl"></div>
-        <div className="floating-orb absolute bottom-32 left-1/3 w-64 h-64 bg-gradient-to-r from-purple-200/20 to-violet-200/20 rounded-full blur-3xl"></div>
-        <div className="floating-orb absolute bottom-20 right-1/4 w-96 h-96 bg-gradient-to-r from-emerald-200/25 to-green-200/25 rounded-full blur-2xl"></div>
+        <div className="absolute top-20 left-16 w-72 h-72 bg-gradient-to-r from-amber-300/20 to-orange-300/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-32 right-20 w-80 h-80 bg-gradient-to-r from-yellow-300/25 to-amber-300/25 rounded-full blur-2xl animate-pulse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute bottom-32 left-1/3 w-64 h-64 bg-gradient-to-r from-orange-300/15 to-red-300/15 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
       </div>
 
-      {/* Geometric Pattern Overlay */}
+      {/* Sun Pattern Overlay */}
       <div className="absolute inset-0 opacity-5">
         <div 
           className="absolute inset-0"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FF8C00' fill-opacity='0.08'%3E%3Cpath d='M40 40m-15 0a15,15 0 1,1 30,0a15,15 0 1,1 -30,0 M20 20m-8 0a8,8 0 1,1 16,0a8,8 0 1,1 -16,0 M60 60m-6 0a6,6 0 1,1 12,0a6,6 0 1,1 -12,0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            backgroundImage: `radial-gradient(circle at 50% 50%, rgba(251, 146, 60, 0.3) 0%, transparent 50%),
+                             radial-gradient(circle at 20% 80%, rgba(251, 146, 60, 0.2) 0%, transparent 40%),
+                             radial-gradient(circle at 80% 20%, rgba(251, 146, 60, 0.2) 0%, transparent 40%)`
           }}
         ></div>
       </div>
 
-      {/* Enhanced Title Section */}
+      {/* Header */}
       <div className="relative z-10 text-center mb-20">
         <div className="inline-flex items-center gap-3 mb-6">
-          <div className="p-3 bg-gradient-to-r from-orange-500 to-amber-500 rounded-xl shadow-lg">
-            <HelpCircle className="w-8 h-8 text-white" />
+          <div className="p-3 bg-gradient-to-r from-amber-500 to-orange-500 rounded-xl shadow-lg">
+            <Sun className="w-8 h-8 text-white" />
           </div>
           <Sparkles className="w-6 h-6 text-orange-500 animate-pulse" />
         </div>
         
         <h2 className="text-5xl md:text-7xl font-black mb-8 leading-tight">
           <span className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 bg-clip-text text-transparent drop-shadow-lg">
-            Frequently
+            Your Solar
           </span>
           <br />
-          <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 bg-clip-text text-transparent drop-shadow-lg">
-            Asked Questions
+          <span className="bg-gradient-to-r from-amber-600 via-orange-500 to-amber-700 bg-clip-text text-transparent drop-shadow-lg">
+            Questions Answered
           </span>
         </h2>
         
-        <div className="w-32 h-2 bg-gradient-to-r from-orange-500 to-amber-600 rounded-full mx-auto shadow-lg mb-6"></div>
+        <div className="w-32 h-2 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full mx-auto shadow-lg mb-6"></div>
         
         <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          Get answers to the most common questions about starting your business in Dubai
+          Everything you need to know about going solar with Squareable India
         </p>
       </div>
 
-      {/* Enhanced FAQ Items */}
+      {/* FAQ Items */}
       <div className="max-w-4xl mx-auto space-y-6 relative z-10">
         {faqs.map((item, idx) => {
           const isOpen = openIndex === idx;
           return (
             <div
               key={idx}
-              className="faq-item group relative overflow-hidden rounded-2xl backdrop-blur-xl transition-all duration-500 cursor-pointer border border-white/60 hover:border-white/80"
+              className="faq-item group relative overflow-hidden rounded-2xl backdrop-blur-xl transition-all duration-500 cursor-pointer border border-orange-200/60 hover:border-orange-300"
               style={{
                 background: `
-                  radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${item.glowColor}, transparent 50%),
+                  radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(251, 146, 60, 0.08), transparent 50%),
                   linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%)
                 `,
                 boxShadow: `
                   0 25px 50px -12px ${item.shadowColor},
-                  0 0 0 1px rgba(255,255,255,0.5),
+                  0 0 0 1px rgba(251, 146, 60, 0.2),
                   inset 0 1px 0 rgba(255,255,255,0.9)
                 `,
               }}
             >
-              {/* Animated border gradient */}
-              <div className="absolute inset-0 rounded-2xl p-[2px] bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{
-                  background: `linear-gradient(45deg, transparent, ${item.shadowColor}, transparent)`
-                }}
-              >
-                <div className="w-full h-full bg-white/95 rounded-2xl"></div>
-              </div>
-
               {/* Shimmer effect */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-full duration-1200 ease-in-out"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-200/40 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-full duration-1200 ease-in-out"></div>
               </div>
 
               {/* Question Button */}
@@ -224,22 +207,19 @@ const EnhancedFaqSection = () => {
                 </div>
               </button>
 
-              {/* Answer Section with Enhanced Animation */}
+              {/* Answer Section */}
               <div
                 className={`overflow-hidden transition-all duration-500 ease-in-out ${
                   isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                 }`}
               >
                 <div className="px-8 pb-6 relative z-10">
-                  {/* Decorative line */}
                   <div className={`h-1 w-full bg-gradient-to-r ${item.gradient} rounded-full mb-4 transform origin-left transition-all duration-700 ${isOpen ? 'scale-x-100' : 'scale-x-0'}`}></div>
                   
-                  {/* Answer text */}
                   <p className="text-gray-600 leading-relaxed text-base pl-16 animate-fade-in">
                     {item.answer}
                   </p>
 
-                  {/* Decorative elements */}
                   <div className="flex justify-end mt-4 pr-16">
                     <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${item.gradient} opacity-60 animate-pulse`}></div>
                   </div>
@@ -248,33 +228,25 @@ const EnhancedFaqSection = () => {
 
               {/* Corner accent */}
               <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl ${item.gradient} opacity-5 group-hover:opacity-10 rounded-bl-full transition-opacity duration-300`}></div>
-
-              {/* Floating particles effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-500">
-                <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full animate-ping" style={{ animationDelay: '0s' }}></div>
-                <div className="absolute top-3/4 right-1/3 w-1.5 h-1.5 bg-white rounded-full animate-ping" style={{ animationDelay: '0.3s' }}></div>
-                <div className="absolute bottom-1/4 left-2/3 w-1 h-1 bg-white rounded-full animate-ping" style={{ animationDelay: '0.6s' }}></div>
-              </div>
             </div>
           );
         })}
       </div>
 
-      {/* Call to Action Section */}
+      {/* CTA Section */}
       <div className="text-center mt-16 relative z-10">
-        <a
+        <div className="inline-flex flex-col items-center gap-4">
+          <a
             href="/contact"
-            className="inline-block bg-[#FF8C00] text-white font-bold px-8 py-4 rounded-full shadow-xl hover:bg-[#e67e00] transition duration-300 hover:shadow-2xl transform hover:scale-105"
+            className="inline-block bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white font-bold px-10 py-5 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105"
           >
-            Still Have Questions?
+            Still Have Questions? Let's Talk Solar
           </a>
-        <p className="mt-4 text-gray-600">
-          Contact our experts for personalized assistance
-        </p>
+          <p className="text-gray-600 text-lg">
+            Schedule a free consultation with our solar experts
+          </p>
+        </div>
       </div>
-
-      {/* Bottom decorative wave */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white/60 to-transparent pointer-events-none"></div>
 
       <style jsx>{`
         .animate-fade-in {
@@ -296,4 +268,4 @@ const EnhancedFaqSection = () => {
   );
 };
 
-export default EnhancedFaqSection;
+export default SolarFaqSection;
